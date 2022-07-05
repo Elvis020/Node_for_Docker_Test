@@ -5,3 +5,12 @@ services:
 script:
   - docker build -t elv00/node .
   - docker images elv00/node
+
+before_deploy:
+  - docker login -u elv00 -p X387@edTH#@=
+
+deploy:
+  provider: script
+  script: docker push elv00/node
+  on:
+    branch: main
